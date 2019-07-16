@@ -1,0 +1,88 @@
+** Experimental Software FIFO - (Very) basic Test Rig **
+
+Fifo population at start-up is 0
+Current value is -1
+
+** Test 1 ** Trying to pop a value from fifo
+Status result of operation was FIFO_STATUS_EMPTY
+Fifo population after test is 0
+Current value is -1
+
+** Test 2 ** Pushing the value 7 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 1
+Current value is 7
+
+** Test 3 ** Pushing the value 8 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 2
+Current value is 8
+
+** Test 4 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 1000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 1
+Current value is 7
+
+** Test 5 ** Pushing the value 9 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 2
+Current value is 9
+
+** Test 6 ** Pushing the value 10 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 3
+Current value is 10
+
+** Test 7 ** Pushing the value 11 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 4
+Current value is 11
+
+** Test 8 ** Pushing the value 12 onto fifo
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 5
+Current value is 12
+
+** Test 9 ** Pushing the value 13 onto fifo
+Status result of operation was FIFO_STATUS_FULL
+Fifo population after test is 5
+Current value is 13
+
+** Test 10 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 2000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 4
+Current value is 8
+
+** Test 11 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 3000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 3
+Current value is 9
+
+** Test 12 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 4000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 2
+Current value is 10
+
+** Test 13 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 5000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 1
+Current value is 11
+
+** Test 14 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 6000
+Status result of operation was FIFO_STATUS_SUCCESS
+Fifo population after test is 0
+Current value is 12
+
+** Test 15 ** Trying to pop a value from fifo
+Current value (may be overwritten by forthcoming pop_try) is 7000
+Status result of operation was FIFO_STATUS_EMPTY
+Fifo population after test is 0
+Current value is 7000
+
+Returning from main() with return value 1
