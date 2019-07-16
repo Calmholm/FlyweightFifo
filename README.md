@@ -21,15 +21,15 @@ Use of the Standard Template Library (STL) and C++11 functionality should be wei
 
 The class needs to provide the following functions;
 
-- push
+- push.
 A writer thread calls this function to push an item into the queue.
 If there is no room in the queue for the item, this function should return immediately indicating to the calling thread that the item was not pushed to the queue.
 
-- pop_try
+- pop_try.
 The reader thread calls this function to fetch the next available item.
 If no items are available the function should return immediately indicating this condition to the calling thread.
 
-- pop
+- pop.
 The reader thread calls this function to fetch the next available item.
 If no items are available the reader thread should be put to sleep until an item becomes available.
 
