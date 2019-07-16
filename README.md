@@ -92,12 +92,12 @@ Fifo item data types
 The data type "T" in the fifo template class may be a simple type or it can be a pointer to something.
 Pointers will be appropriate for "large work items (e.g. a struct or vector)" as per the design brief.
 
-The Windows Console App main() code here uses ints ("Fifo<int> int_test_fifo") for testing, but we could equally have for example;
+The Windows Console App main() code here uses ints ("Fifo< int > int_test_fifo") for testing, but we could equally have for example;
 
-- "Fifo<short> short_test_fifo"
-- "Fifo<float> float_test_fifo"
-- "Fifo<void*> voidPointer_test_fifo"
-- "Fifo<my_structure*> structPtr_test_fifo"
+- "Fifo< short > short_test_fifo"
+- "Fifo< float > float_test_fifo"
+- "Fifo< void* > voidPointer_test_fifo"
+- "Fifo< my_structure* > structPtr_test_fifo"
 
 
 Fifo functions return values
@@ -125,8 +125,8 @@ The app can be built using Visual Studio (VS2017) as follows;
 2. Select "Windows Console Application"
 3. Type in a name for the project or accept the default
 4. Click on 'OK' (in the bottom-right of the dialog)
-5. Copy this entire file (CTRL+A, CTRL+C)
-6. In VS2017 replace the contents of file "<project_name>.cpp" with the text copied from this file (CTRL+A, CTRL+V)
+5. Copy the entire contents of the .cpp source file (CTRL+A, CTRL+C)
+6. In VS2017 replace the contents of file "<project_name>.cpp" with the text copied from the source file (CTRL+A, CTRL+V)
 7. Select from the Menu bar: Build Tab->Build Solution
 8. If there are no build errors, run the Console App from within VS2017 using Debug->Start [Without] Debugging
 
