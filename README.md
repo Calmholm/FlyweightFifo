@@ -3,10 +3,10 @@
 A low-level low-latency thread-safe software fifo template class.
 
 
-About this file
-===============
+About this project
+==================
 
-This file contains experimental C++ code which has been developed for the purpose of implementing a thread-safe software fifo template class.
+This project contains experimental C++ code which has been developed for the purpose of implementing a thread-safe software fifo template class.
 This file also contains a main() function which has been developed for the purpose of implementing a Windows Console App that performs rudimentary testing of an instantiation of the software fifo template class.
 
 
