@@ -43,18 +43,18 @@ This solution is an attempt to satisfy the design brief above for the Windows Op
 Design considerations and evolution of this solution
 ====================================================
 
-Consideration was given to using classes from the Standard Template Library, in particular classes std::<array>, std::<deque> and std::<queue>.
+Consideration was given to using classes from the Standard Template Library, in particular classes array, deque and queue.
 
 Memory re-allocations are expensive, compromising footprint and performance. Since this exercise uses a fixed-length fifo, memory re-allocations can be avoided.
 
-The std::<[lists]> classes were deemed non-optimal because being linked lists they embed a level of indirection which may compromise element access times. Conversely, fast sequential access will minimise latency giving better performance in a FIFO implementation, as per the design brief.
+The list classes were deemed non-optimal because being linked lists they embed a level of indirection which may compromise element access times. Conversely, fast sequential access will minimise latency thereby giving better performance in a fifo implementation, as per the design brief.
 
-The C++11 std::<array> container class seems to offer little added value in this exercise compared to using an ordinary Array[]. Indeed, even its member function array::size(), rather than returning the current occupancy in terms of number of elements, merely returns the same as array::max_size(), which is just the array's (fixed value) capacity, the second parameter used to instantiate the class.
-Obtaining current fifo population would require crafting the relevant function. This, along with the baggage of a host of other member functions largely irrelevant to this exercise, was seen as adequate reason to consider use of <array> as non-optimal here.
+The C++11 array container class seems to offer little added value in this exercise compared to using an ordinary Array[]. Indeed, even its member function size(), rather than returning the current occupancy in terms of number of elements, merely returns the same as max_size(), which is just the array's (fixed value) capacity, the second parameter used to instantiate the class.
+Obtaining current fifo population would require crafting the relevant function. This, along with the baggage of a host of other member functions largely irrelevant to this exercise, was seen as adequate reason to consider use of the array class as non-optimal here.
 
-The std::<queue> container adapter class, whether or not based on an underlying std::<deque> container (the default), seems upon cursory consideration to be well suited to a fifo application, and indeed some C++11 documentation suggests this.
-Class <queue> is based on a dynamic array, which has the ability to re-size. This ability is not needed in this exercise, and thus this entire functionality is superfluous. Also there is need to instantiate (or copy) a <queue> from a <deque> or <list>, which adds more code baggage and complexity.
-Generally <queue> was considered a better STL choice but still non-optimal for this exercise.
+The queue container adapter class, whether or not based on an underlying deque container (the default), seems upon cursory consideration to be well suited to a fifo application, and indeed some C++11 documentation suggests this.
+The queue class is based on a dynamic array, which has the ability to re-size. This ability is not needed in this exercise, and thus this entire functionality is superfluous. Also there is need to instantiate (or copy) a queue from a deque or list, which adds more code baggage and complexity.
+Generally the queue class was considered a better STL choice but still non-optimal for this exercise.
 
 After due consideration of the repercussions of using STL classes in this exercise it was decided to instead use a bespoke low-level approach. This has been done for the primary reasons of efficiency, fitness for purpose, simplicity and comprehensibilty, thereby realising;
 
@@ -94,10 +94,10 @@ Pointers will be appropriate for "large work items (e.g. a struct or vector)" as
 
 The Windows Console App main() code here uses ints ("Fifo<int> int_test_fifo") for testing, but we could equally have for example;
 
-"Fifo<short> short_test_fifo"
-"Fifo<float> float_test_fifo"
-"Fifo<void*> voidPointer_test_fifo"
-"Fifo<my_structure*> structPtr_test_fifo"
+- "Fifo<short> short_test_fifo"
+- "Fifo<float> float_test_fifo"
+- "Fifo<void*> voidPointer_test_fifo"
+- "Fifo<my_structure*> structPtr_test_fifo"
 
 
 Fifo functions return values
@@ -107,10 +107,10 @@ Rather than returning merely 'success' or 'failure', the fifo functions may retu
 
 In this exercise these are;
 
-FIFO_STATUS_SUCCESS	  - returned by functions push() and pop_try(). Success, the operation had no problems.
-FIFO_STATUS_FULL	  - returned by function push(). There was no space left in the FIFO for a new item.
-FIFO_STATUS_EMPTY	  - returned by function pop_try(). There were no items in the FIFO to fetch.
-FIFO_STATUS_LOCKED	  - returned by function push(). This "writer" thread failed to push a new item because
+FIFO_STATUS_SUCCESS   - returned by functions push() and pop_try(). Success, the operation had no problems.
+FIFO_STATUS_FULL      - returned by function push(). There was no space left in the FIFO for a new item.
+FIFO_STATUS_EMPTY     - returned by function pop_try(). There were no items in the FIFO to fetch.
+FIFO_STATUS_LOCKED    - returned by function push(). This "writer" thread failed to push a new item because
                         the FIFO was busy (so try again later).
 FIFO_STATUS_PREEMPTED - returned by function push(). This "writer" thread failed to push a new item because
                         it was pre-empted by another and the FIFO is in fact now stuffed (FIFO_STATUS_FULL).
