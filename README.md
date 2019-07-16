@@ -107,12 +107,12 @@ Rather than returning merely 'success' or 'failure', the fifo functions may retu
 
 In this exercise these are;
 
-FIFO_STATUS_SUCCESS   - returned by functions push() and pop_try(). Success, the operation had no problems.
-FIFO_STATUS_FULL      - returned by function push(). There was no space left in the FIFO for a new item.
-FIFO_STATUS_EMPTY     - returned by function pop_try(). There were no items in the FIFO to fetch.
-FIFO_STATUS_LOCKED    - returned by function push(). This "writer" thread failed to push a new item because
+- FIFO_STATUS_SUCCESS   - returned by functions push() and pop_try(). Success, the operation had no problems.
+- FIFO_STATUS_FULL      - returned by function push(). There was no space left in the FIFO for a new item.
+- FIFO_STATUS_EMPTY     - returned by function pop_try(). There were no items in the FIFO to fetch.
+- FIFO_STATUS_LOCKED    - returned by function push(). This "writer" thread failed to push a new item because
                         the FIFO was busy (so try again later).
-FIFO_STATUS_PREEMPTED - returned by function push(). This "writer" thread failed to push a new item because
+- FIFO_STATUS_PREEMPTED - returned by function push(). This "writer" thread failed to push a new item because
                         it was pre-empted by another and the FIFO is in fact now stuffed (FIFO_STATUS_FULL).
 
 
