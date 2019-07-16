@@ -128,7 +128,7 @@ The app can be built using Visual Studio (VS2017) as follows;
 5. Copy this entire file (CTRL+A, CTRL+C)
 6. In VS2017 replace the contents of file "<project_name>.cpp" with the text copied from this file (CTRL+A, CTRL+V)
 7. Select from the Menu bar: Build Tab->Build Solution
-8. If there are no build errors, run the Console App from within VS2017 using Debug->Start [Withpout] Debugging
+8. If there are no build errors, run the Console App from within VS2017 using Debug->Start [Without] Debugging
 
 
 Suggestions for more comprehensive multi-threaded testing
